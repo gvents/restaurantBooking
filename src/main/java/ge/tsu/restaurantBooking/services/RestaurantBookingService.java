@@ -44,12 +44,12 @@ public class RestaurantBookingService {
     }
 
     public List<AccessibilityTable> getAccessibilityTable() {
-        return accessibilityTableRepository.getAccessibilityTableByBooked(false).orElse(null);
+        return accessibilityTableRepository.getAllByBooked(false).orElse(null);
     }
 
     @Transactional
     public boolean bookTableAndCreateCustomer(TableBookingDTO bookingDTO) {
-        Optional<AccessibilityTable> accessibilityTableOptional = accessibilityTableRepository.getAccessibilityTableByIdAndBooked(bookingDTO.getAccessibilityID(), false);
+        Optional<AccessibilityTable> accessibilityTableOptional = accessibilityTableRepository.getByIdAndBooked(bookingDTO.getAccessibilityID(), false);
         if (accessibilityTableOptional.isPresent()) {
             Customer customer = new Customer();
             customer.setFirstName(bookingDTO.getFirstName());
@@ -74,11 +74,11 @@ public class RestaurantBookingService {
     }
 
     public List<BookedTable> getBookedTables() {
-        return bookedTableRepository.getBookedTablesByIdIsNotNull().orElse(null);
+        return (List<BookedTable>) bookedTableRepository.findAll();
     }
 
     public void clearBookings() {
-        List<AccessibilityTable> accessibilityTables = accessibilityTableRepository.getAccessibilityTableByBooked(true).orElse(new ArrayList<>());
+        List<AccessibilityTable> accessibilityTables = accessibilityTableRepository.getAllByBooked(true).orElse(new ArrayList<>());
         accessibilityTables.forEach(ac -> {
             ac.setBooked(false);
             accessibilityTableRepository.save(ac);

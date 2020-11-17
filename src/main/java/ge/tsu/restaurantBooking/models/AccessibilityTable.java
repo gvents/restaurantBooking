@@ -46,36 +46,4 @@ public class AccessibilityTable {
     public int hashCode() {
         return Objects.hash(id);
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Tables getTables() {
-        return tables;
-    }
-
-    public void setTables(Tables tables) {
-        this.tables = tables;
-    }
-
-    public LocalTime getAccessibilityTime() {
-        return accessibilityTime;
-    }
-
-    public void setAccessibilityTime(LocalTime accessibilityTime) {
-        this.accessibilityTime = accessibilityTime;
-    }
-
-    public boolean isBooked() {
-        return booked;
-    }
-
-    public void setBooked(boolean booked) {
-        this.booked = booked;
-    }
 }
