@@ -31,7 +31,7 @@ public class BookedTable {
     @JoinColumn(name = "accessibility_id", nullable = false)
     private AccessibilityTable table;
 
-    @Column(name = "comment")
+    @Column(name = "customer_comment")
     private String comment;
 
     @Column(name = "create_ts", nullable = false)

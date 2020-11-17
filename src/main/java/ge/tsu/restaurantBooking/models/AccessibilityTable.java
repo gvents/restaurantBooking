@@ -31,7 +31,7 @@ public class AccessibilityTable {
     @Column(name = "accessibility_time")
     private LocalTime accessibilityTime;
 
-    @Column(name = "is_booked",columnDefinition = "boolean default false")
+    @Column(name = "is_booked")
     private boolean booked;
 
     @Override
