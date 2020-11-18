@@ -3,7 +3,7 @@ package ge.tsu.restaurantBooking.controllers;
 import ge.tsu.restaurantBooking.dto.TableBookingDTO;
 import ge.tsu.restaurantBooking.models.AccessibilityTable;
 import ge.tsu.restaurantBooking.models.BookedTable;
-import ge.tsu.restaurantBooking.models.Tables;
+import ge.tsu.restaurantBooking.models.TblTable;
 import ge.tsu.restaurantBooking.services.RestaurantBookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,7 +32,7 @@ public class RestaurantBookingController {
 
     @GetMapping("tables")
     public @ResponseBody
-    List<Tables> registerClient(@RequestParam(required = false) Long space) {
+    List<TblTable> registerClient(@RequestParam(required = false) Long space) {
         return restaurantBookingService.registerClient(space);
     }
 

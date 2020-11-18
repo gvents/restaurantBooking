@@ -28,8 +28,8 @@ public class BookedTable {
     private Customer customer;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "accessibility_id", nullable = false)
-    private AccessibilityTable table;
+    @JoinColumn(name = "accessibility_table_id", nullable = false)
+    private AccessibilityTable accessibilityTable;
 
     @Column(name = "comment")
     private String comment;

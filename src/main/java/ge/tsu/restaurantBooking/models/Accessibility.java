@@ -11,33 +11,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.time.LocalTime;
 import java.util.Objects;
 
 @Data
 @Entity
-@javax.persistence.Table(name = "accessibility_table")
-public class AccessibilityTable {
+@javax.persistence.Table(name = "accessibility")
+public class Accessibility {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tbl_table_id")
-    private TblTable tblTable;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "accessibility_id")
-    private Accessibility accessibility;
-
-    @Column(name = "is_booked",columnDefinition = "boolean default false")
-    private boolean booked;
+    @Column(name = "accessibility_time")
+    private LocalTime accessibilityTime;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AccessibilityTable that = (AccessibilityTable) o;
+        Accessibility that = (Accessibility) o;
         return Objects.equals(id, that.id);
     }
 
