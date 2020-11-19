@@ -49,4 +49,44 @@ public class BookedTable {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public AccessibilityTable getAccessibilityTable() {
+        return accessibilityTable;
+    }
+
+    public void setAccessibilityTable(AccessibilityTable accessibilityTable) {
+        this.accessibilityTable = accessibilityTable;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public LocalDateTime getCreateTS() {
+        return createTS;
+    }
+
+    public void setCreateTS(LocalDateTime createTS) {
+        this.createTS = createTS;
+    }
 }
