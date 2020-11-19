@@ -1,8 +1,11 @@
 package ge.tsu.restaurantBooking.controllers;
 
 import ge.tsu.restaurantBooking.dto.TableBookingDTO;
+import ge.tsu.restaurantBooking.models.Accessibility;
 import ge.tsu.restaurantBooking.models.AccessibilityTable;
 import ge.tsu.restaurantBooking.models.BookedTable;
+import ge.tsu.restaurantBooking.models.Customer;
+import ge.tsu.restaurantBooking.models.Menu;
 import ge.tsu.restaurantBooking.models.TblTable;
 import ge.tsu.restaurantBooking.services.RestaurantBookingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,14 +35,20 @@ public class RestaurantBookingController {
 
     @GetMapping("tables")
     public @ResponseBody
-    List<TblTable> registerClient(@RequestParam(required = false) Long space) {
-        return restaurantBookingService.registerClient(space);
+    List<TblTable> getTables(@RequestParam(required = false) Long space) {
+        return restaurantBookingService.getTables(space);
     }
 
     @GetMapping("accessibility")
     public @ResponseBody
-    List<AccessibilityTable> getAccessibilityTable() {
-        return restaurantBookingService.getAccessibilityTable();
+    List<Accessibility> getAccessibility() {
+        return restaurantBookingService.getAccessibility();
+    }
+
+    @GetMapping("accessibility_table")
+    public @ResponseBody
+    List<AccessibilityTable> getAccessibilityTable(@RequestParam(required = false) Boolean booked) {
+        return restaurantBookingService.getAccessibilityTable(booked);
     }
 
     @PostMapping()
@@ -50,7 +59,7 @@ public class RestaurantBookingController {
                 ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
 
-    @GetMapping("bookedtables")
+    @GetMapping("booked_tables")
     public @ResponseBody
     List<BookedTable> getBookedTables() {
         return restaurantBookingService.getBookedTables();
@@ -60,6 +69,18 @@ public class RestaurantBookingController {
     public @ResponseBody
     void clearBookings() {
         restaurantBookingService.clearBookings();
+    }
+
+    @GetMapping("customers")
+    public @ResponseBody
+    List<Customer> getCustomers() {
+        return restaurantBookingService.getCustomers();
+    }
+
+    @GetMapping("menu")
+    public @ResponseBody
+    List<Menu> getMenu() {
+        return restaurantBookingService.getMenu();
     }
 
 }
