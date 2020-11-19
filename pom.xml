@@ -27,7 +27,7 @@
             <scope>system</scope>
             <systemPath>${basedir}/ojdbc6-11.2.0.3.jar</systemPath>
         </dependency>
-         https://mvnrepository.com/artifact/mysql/mysql-connector-java
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <!--<dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
