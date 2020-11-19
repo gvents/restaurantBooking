@@ -30,7 +30,7 @@ public class AccessibilityTable {
     @JoinColumn(name = "accessibility_id")
     private Accessibility accessibility;
 
-    @Column(name = "is_booked",columnDefinition = "boolean default false")
+    @Column(name = "is_booked")
     private boolean booked;
 
     @Override
@@ -44,5 +44,37 @@ public class AccessibilityTable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public TblTable getTblTable() {
+        return tblTable;
+    }
+
+    public void setTblTable(TblTable tblTable) {
+        this.tblTable = tblTable;
+    }
+
+    public Accessibility getAccessibility() {
+        return accessibility;
+    }
+
+    public void setAccessibility(Accessibility accessibility) {
+        this.accessibility = accessibility;
+    }
+
+    public boolean isBooked() {
+        return booked;
+    }
+
+    public void setBooked(boolean booked) {
+        this.booked = booked;
     }
 }

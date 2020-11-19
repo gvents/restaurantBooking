@@ -24,7 +24,7 @@ public class Accessibility {
     private Long id;
 
     @Column(name = "accessibility_time")
-    private LocalTime accessibilityTime;
+    private String accessibilityTime;
 
     @Override
     public boolean equals(Object o) {
