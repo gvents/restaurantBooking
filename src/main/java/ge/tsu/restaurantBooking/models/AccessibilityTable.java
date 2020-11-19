@@ -11,13 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import java.time.LocalTime;
 import java.util.Objects;
 
 @Data
 @Entity
-@Table(name = "accessibility_table")
+@javax.persistence.Table(name = "accessibility_table")
 public class AccessibilityTable {
 
     @Id
@@ -25,11 +23,12 @@ public class AccessibilityTable {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "table_id")
-    private Tables tables;
+    @JoinColumn(name = "tbl_table_id")
+    private TblTable tblTable;
 
-    @Column(name = "accessibility_time")
-    private LocalTime accessibilityTime;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "accessibility_id")
+    private Accessibility accessibility;
 
     @Column(name = "is_booked")
     private boolean booked;

@@ -1,5 +1,6 @@
 package ge.tsu.restaurantBooking.models;
 
+
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -10,38 +11,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Objects;
 
 @Data
 @Entity
-@Table(name = "booked_table")
-public class BookedTable {
+@javax.persistence.Table(name = "accessibility")
+public class Accessibility {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id", nullable = false)
-    private Customer customer;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "accessibility_table_id", nullable = false)
-    private AccessibilityTable accessibilityTable;
-
-    @Column(name = "customer_comment")
-    private String comment;
-
-    @Column(name = "create_ts", nullable = false)
-    private LocalDateTime createTS;
+    @Column(name = "accessibility_time")
+    private LocalTime accessibilityTime;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BookedTable that = (BookedTable) o;
+        Accessibility that = (Accessibility) o;
         return Objects.equals(id, that.id);
     }
 

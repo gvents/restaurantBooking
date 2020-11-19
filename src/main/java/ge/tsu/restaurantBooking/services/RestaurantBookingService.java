@@ -8,7 +8,7 @@ import ge.tsu.restaurantBooking.dto.TableBookingDTO;
 import ge.tsu.restaurantBooking.models.AccessibilityTable;
 import ge.tsu.restaurantBooking.models.BookedTable;
 import ge.tsu.restaurantBooking.models.Customer;
-import ge.tsu.restaurantBooking.models.Tables;
+import ge.tsu.restaurantBooking.models.TblTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +39,7 @@ public class RestaurantBookingService {
         this.bookedTableRepository = bookedTableRepository;
     }
 
-    public List<Tables> registerClient(Long space) {
+    public List<TblTable> registerClient(Long space) {
         return space == null || space < 1 ? tablesRepository.getTablesByIdIsNotNull().orElse(null) : tablesRepository.getTablesBySpace(space).orElse(null);
     }
 
@@ -63,7 +63,7 @@ public class RestaurantBookingService {
 
             BookedTable bookedTable = new BookedTable();
             bookedTable.setCustomer(customer);
-            bookedTable.setTable(accessibilityTable);
+            bookedTable.setAccessibilityTable(accessibilityTable);
             bookedTable.setComment(bookingDTO.getComment());
             bookedTable.setCreateTS(LocalDateTime.now());
             bookedTableRepository.save(bookedTable);
@@ -78,8 +78,8 @@ public class RestaurantBookingService {
     }
 
     public void clearBookings() {
-        List<AccessibilityTable> accessibilityTables = accessibilityTableRepository.getAllByBooked(true).orElse(new ArrayList<>());
-        accessibilityTables.forEach(ac -> {
+        List<AccessibilityTable> accessibilities = accessibilityTableRepository.getAllByBooked(true).orElse(new ArrayList<>());
+        accessibilities.forEach(ac -> {
             ac.setBooked(false);
             accessibilityTableRepository.save(ac);
         });
