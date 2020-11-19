@@ -25,5 +25,5 @@ public class Menu {
     private Double price;
 
     @Column(name = "photo")
-    private Blob photo;
+    private String photo;
 }
