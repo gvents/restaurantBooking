@@ -35,8 +35,9 @@ public class RestaurantBookingController {
 
     @GetMapping("tables")
     public @ResponseBody
-    List<TblTable> getTables(@RequestParam(required = false) Long space) {
-        return restaurantBookingService.getTables(space);
+    List<TblTable> getTables(@RequestParam(required = false) Long space,
+                             @RequestParam(required = false) Long restaurantId) {
+        return restaurantBookingService.getTables(space, restaurantId);
     }
 
     @GetMapping("accessibility")
@@ -47,8 +48,9 @@ public class RestaurantBookingController {
 
     @GetMapping("accessibility_table")
     public @ResponseBody
-    List<AccessibilityTable> getAccessibilityTable(@RequestParam(required = false) Boolean booked) {
-        return restaurantBookingService.getAccessibilityTable(booked);
+    List<AccessibilityTable> getAccessibilityTable(@RequestParam(required = false) Boolean booked,
+                                                   @RequestParam(required = false) Long restaurantId) {
+        return restaurantBookingService.getAccessibilityTable(booked, restaurantId);
     }
 
     @PostMapping()
@@ -67,8 +69,8 @@ public class RestaurantBookingController {
 
     @PutMapping("clear")
     public @ResponseBody
-    void clearBookings() {
-        restaurantBookingService.clearBookings();
+    void clearBookings(Long restaurantId) {
+        restaurantBookingService.clearBookings(restaurantId);
     }
 
     @GetMapping("customers")
