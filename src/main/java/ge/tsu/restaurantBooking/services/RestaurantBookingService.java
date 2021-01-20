@@ -111,7 +111,11 @@ public class RestaurantBookingService {
         return (List<Customer>) customerRepository.findAll();
     }
 
-    public List<Menu> getMenu() {
-        return (List<Menu>) menuRepository.findAll();
+    public List<Menu> getMenu(Long restaurantId) {
+        return restaurantId == null || restaurantId < 1 ? (List<Menu>) menuRepository.findAll() : menuRepository.getMenuByRestaurant_Id(restaurantId).orElse(null);
+    }
+
+    public List<Restaurant> getRestaurants() {
+        return (List<Restaurant>) restaurantRepository.findAll();
     }
 }

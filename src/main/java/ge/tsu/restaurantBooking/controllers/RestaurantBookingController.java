@@ -1,12 +1,7 @@
 package ge.tsu.restaurantBooking.controllers;
 
 import ge.tsu.restaurantBooking.dto.TableBookingDTO;
-import ge.tsu.restaurantBooking.models.Accessibility;
-import ge.tsu.restaurantBooking.models.AccessibilityTable;
-import ge.tsu.restaurantBooking.models.BookedTable;
-import ge.tsu.restaurantBooking.models.Customer;
-import ge.tsu.restaurantBooking.models.Menu;
-import ge.tsu.restaurantBooking.models.TblTable;
+import ge.tsu.restaurantBooking.models.*;
 import ge.tsu.restaurantBooking.services.RestaurantBookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -81,8 +76,14 @@ public class RestaurantBookingController {
 
     @GetMapping("menu")
     public @ResponseBody
-    List<Menu> getMenu() {
-        return restaurantBookingService.getMenu();
+    List<Menu> getMenu(@RequestParam(required = false) Long restaurantId) {
+        return restaurantBookingService.getMenu(restaurantId);
+    }
+
+    @GetMapping("restaurants")
+    public @ResponseBody
+    List<Restaurant> getRestaurants() {
+        return restaurantBookingService.getRestaurants();
     }
 
 }
